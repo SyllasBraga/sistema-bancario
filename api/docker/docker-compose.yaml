@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: senai_api
+
+volumes:
+  dbdata:
