@@ -17,9 +17,17 @@ public class ContaModel {
     @Column(nullable = false)
     private LocalDateTime dataCriacao;
 
-    @Column(nullable = false, unique = true, length = 11)
+    @Column(nullable = false, length = 11)
     private String cpf;
 
-    @Column(nullable = false, unique = true, length = 100)
+    @Column(nullable = false, unique = true, length = 7)
     private String conta;
+
+    @Column(nullable = false, length = 100)
+    private String nomeTitular;
+
+    @PrePersist
+    private void prePersist() {
+        this.dataCriacao = LocalDateTime.now();
+    }
 }
