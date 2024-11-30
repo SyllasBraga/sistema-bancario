@@ -1,10 +1,13 @@
 package com.senai.api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -29,6 +32,10 @@ public class ContaModel {
 
     @Column(nullable = true, precision = 10, scale = 2)
     private BigDecimal saldo;
+
+    @OneToMany(mappedBy = "conta", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<MovimentacaoModel> movimentacoes = new ArrayList<>();
 
     @PrePersist
     private void prePersist() {

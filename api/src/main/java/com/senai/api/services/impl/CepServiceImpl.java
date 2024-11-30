@@ -3,6 +3,7 @@ package com.senai.api.services.impl;
 import com.senai.api.api.requests.CriarCepRequest;
 import com.senai.api.api.responses.CriarCepResponse;
 import com.senai.api.api.responses.ListarCepResponse;
+import com.senai.api.exceptions.BadRequestException;
 import com.senai.api.mappers.CepMapper;
 import com.senai.api.models.CepModel;
 import com.senai.api.models.enums.MensagensEnum;
@@ -50,7 +51,7 @@ public class CepServiceImpl implements CepService {
 
     private void validaSeCepJaExiste(String cep) {
         if (cepRepository.findByCep(cep).isPresent()) {
-            throw new RuntimeException(MensagensEnum.CEP_JA_CADASTRADO.getMensagem());
+            throw new BadRequestException(MensagensEnum.CEP_JA_CADASTRADO.getMensagem());
         }
     }
 }
