@@ -12,7 +12,8 @@ public enum MensagensEnum {
     CEP_JA_CADASTRADO("CEP já cadastrado"),
     CONTA_DELETADA_COM_SUCESSO("Conta deletada com sucesso"),
     MOVIMENTACAO_CADASTRADA_COM_SUCESSO("Movimentação cadastrada com sucesso"),
-    ERRO_AO_CADASTRAR_MOVIMENTACAO("Erro ao cadastrar movimentação: ");
+    ERRO_AO_CADASTRAR_MOVIMENTACAO("Erro ao cadastrar movimentação: "),
+    CONTA_SEM_PERMISSAO("Conta sem permissão de ter o saldo negativo desejado");
 
     private final String mensagem;
 

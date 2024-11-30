@@ -3,6 +3,7 @@ package com.senai.api.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -26,8 +27,12 @@ public class ContaModel {
     @Column(nullable = false, length = 100)
     private String nomeTitular;
 
+    @Column(nullable = true, precision = 10, scale = 2)
+    private BigDecimal saldo;
+
     @PrePersist
     private void prePersist() {
         this.dataCriacao = LocalDateTime.now();
+        this.setSaldo(BigDecimal.ZERO);
     }
 }

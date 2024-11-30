@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import com.senai.api.models.enums.AcaoEnum;
+import org.hibernate.annotations.Cascade;
 
 @Data
 @Entity
@@ -30,4 +31,14 @@ public class MovimentacaoModel {
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal valor;
+
+    @PrePersist
+    private void atualizarSaldoConta() {
+        if (acao == AcaoEnum.DEPOSITAR) {
+            conta.setSaldo(conta.getSaldo().add(valor));
+        } else if (acao == AcaoEnum.RETIRAR) {
+            conta.setSaldo(conta.getSaldo().subtract(valor));
+        }
+        this.dataMovimentacao = LocalDateTime.now();
+    }
 }

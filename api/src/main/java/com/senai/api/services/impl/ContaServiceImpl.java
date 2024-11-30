@@ -75,13 +75,13 @@ public class ContaServiceImpl implements ContaService{
     public void deletarConta(String conta) {
         log.info(":: Request - deletarConta() - CONTA {} ::", conta);
 
-        ContaModel model = recuperaConta(conta);
+        ContaModel model = recuperarConta(conta);
         contaRepository.delete(model);
 
         log.info(":: Response - deletarConta() - Conta {} deletada com sucesso ::", conta);
     }
 
-    private ContaModel recuperaConta(String conta) {
+    public ContaModel recuperarConta(String conta) {
         log.info(":: Request - recuperaConta() - CONTA {} ::", conta);
 
         Optional<ContaModel> optional = contaRepository.findByConta(conta);

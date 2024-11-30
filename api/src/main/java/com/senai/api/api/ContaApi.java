@@ -6,8 +6,6 @@ import com.senai.api.api.responses.RespostaGenerica;
 import jakarta.validation.Valid;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +18,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import jakarta.websocket.server.PathParam;
 
 @RequestMapping("/senai-api/v1/conta")
 public interface ContaApi {

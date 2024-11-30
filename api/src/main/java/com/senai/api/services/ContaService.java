@@ -3,6 +3,7 @@ package com.senai.api.services;
 
 import java.util.List;
 
+import com.senai.api.models.ContaModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,4 +17,5 @@ public interface ContaService {
     List<ListarContaResponse> listarContasPorCpf(String cpf);
     Page<ListarContaResponse> listarContas(Pageable pageable);
     void deletarConta(String conta);
+    ContaModel recuperarConta(String conta);
 }
