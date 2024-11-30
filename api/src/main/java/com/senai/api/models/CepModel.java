@@ -19,5 +19,8 @@ public class CepModel {
     private String rua;
 
     @Column(nullable = false, length = 50)
+    private String cidade;
+
+    @Column(nullable = false, length = 50)
     private String estado;
 }
