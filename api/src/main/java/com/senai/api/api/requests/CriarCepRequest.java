@@ -13,11 +13,12 @@ public class CriarCepRequest {
     @Size(min = 8, max = 8, message = "Deve ser um CEP válido")
     private String cep;
 
-    @Size(min = 5, max = 100, message = "Deve ter entre 5 a 100 caracteres")
     private String rua;
 
     @Size(min = 2, max = 50, message = "Deve ter entre 2 a 50 caracteres")
     private String cidade;
+
+    private String bairro;
 
     @Size(min = 2, max = 50, message = "Deve ter entre 2 a 50 caracteres")
     private String estado;

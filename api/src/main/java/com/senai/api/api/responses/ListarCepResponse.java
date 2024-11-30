@@ -13,6 +13,8 @@ public class ListarCepResponse {
 
     private String rua;
 
+    private String bairro;
+
     private String cidade;
 
     private String estado;

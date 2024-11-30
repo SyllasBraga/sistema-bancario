@@ -15,8 +15,11 @@ public class CepModel {
     @Column(nullable = false, unique = true, length = 8)
     private String cep;
 
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String rua;
+
+    @Column(length = 50)
+    private String bairro;
 
     @Column(nullable = false, length = 50)
     private String cidade;
