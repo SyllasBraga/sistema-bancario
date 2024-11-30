@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/senai-backend/pessoa")
+@RequestMapping("/senai-backend/v1/pessoa")
 public interface PessoaApi {
 
     @PostMapping
