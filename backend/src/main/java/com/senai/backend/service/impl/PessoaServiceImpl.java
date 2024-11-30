@@ -3,6 +3,8 @@ package com.senai.backend.service.impl;
 import com.senai.backend.api.request.AtualizarPessoaRequest;
 import com.senai.backend.api.request.CriarPessoaRequest;
 import com.senai.backend.api.response.PessoaResponse;
+import com.senai.backend.exceptions.BadRequestException;
+import com.senai.backend.exceptions.NotFoundException;
 import com.senai.backend.mappers.PessoaMapper;
 import com.senai.backend.models.PessoaModel;
 import com.senai.backend.repositories.PessoaRepository;
@@ -70,13 +72,13 @@ public class PessoaServiceImpl implements PessoaService {
         Optional<PessoaModel> model = pessoaRepository.findByCpf(cpf);
 
         if (model.isPresent()){
-            throw new RuntimeException("Erro");
+            throw new BadRequestException("Pessoa já cadastrada");
         }
     }
 
     private PessoaModel procuraPessoaPorId(Integer idPessoa){
 
         return pessoaRepository.findById(idPessoa)
-                .orElseThrow(() -> new RuntimeException("Erro"));
+                .orElseThrow(() -> new NotFoundException("Pessoa não encontrada"));
     }
 }
