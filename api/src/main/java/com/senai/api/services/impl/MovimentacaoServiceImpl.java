@@ -2,20 +2,22 @@ package com.senai.api.services.impl;
 
 import com.senai.api.api.requests.CriarMovimentacaoRequest;
 import com.senai.api.api.responses.CriarMovimentacaoResponse;
+import com.senai.api.api.responses.ExtratoMovimentacaoResponse;
 import com.senai.api.mappers.MovimentacaoMapper;
 import com.senai.api.models.ContaModel;
 import com.senai.api.models.MovimentacaoModel;
 import com.senai.api.models.enums.MensagensEnum;
-import com.senai.api.repositories.ContaRepository;
 import com.senai.api.repositories.MovimentacaoRepository;
 import com.senai.api.services.ContaService;
 import com.senai.api.services.MovimentacaoService;
 import com.senai.api.services.strategy.ValidacaoSaldoStrategy;
 import com.senai.api.services.strategy.factory.ValidacaoSaldoStrategyFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -51,6 +53,19 @@ public class MovimentacaoServiceImpl implements MovimentacaoService {
         response.setMensagem(MensagensEnum.MOVIMENTACAO_CADASTRADA_COM_SUCESSO.getMensagem());
 
         log.info(":: Response = criarMovimentacao - ID {} ::", response);
+        return response;
+    }
+
+    @Override
+    public Page<ExtratoMovimentacaoResponse> obterExtrato(String conta, Pageable pageable) {
+        log.info(":: Request - obterExtrato() - CONTA {} ::", conta);
+
+        ContaModel contaModel = contaService.recuperarConta(conta);
+
+        Page<MovimentacaoModel> movimentacoes = movimentacaoRepository.findByConta(contaModel, pageable);
+        Page<ExtratoMovimentacaoResponse> response = MovimentacaoMapper.INSTANCE.toExtratoResponsePage(movimentacoes);
+
+        log.info(":: Response - obterExtrato() - Movimentações encontradas: {} ::", response.getTotalElements());
         return response;
     }
 }
