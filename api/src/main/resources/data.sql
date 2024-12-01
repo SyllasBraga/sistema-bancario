@@ -23,43 +23,86 @@ INSERT INTO cep (cep, bairro, cidade, estado, rua) VALUES
 ('39700000', null, 'Peçanha', 'Minas Gerais', null);
 
 INSERT INTO conta (saldo, conta, datacriacao, cpf, nometitular) VALUES
-(450.00, '1234567', NOW() - INTERVAL '3 days', '12345678901', 'João Silva'),
-(-500.00, '7654321', NOW() - INTERVAL '7 days', '23456789012', 'Maria Oliveira'),
-(-900.00, '2345678', NOW() - INTERVAL '12 days', '34567890123', 'Carlos Santos'),
-(-2700.00, '8765432', NOW() - INTERVAL '20 days', '45678901234', 'Ana Souza'),
-(-1700.00, '3456789', NOW() - INTERVAL '30 days', '56789012345', 'Pedro Lima');
+(450.00, '1234567', NOW() - INTERVAL '3 days', '82465415794', 'João Silva'),
+(-500.00, '7654321', NOW() - INTERVAL '7 days', '76846869336', 'Maria Oliveira'),
+(-900.00, '2345678', NOW() - INTERVAL '12 days', '18298481275', 'Carlos Santos'),
+(-2700.00, '8765432', NOW() - INTERVAL '20 days', '18230852880', 'Ana Pereira'),
+(-1700.00, '3456789', NOW() - INTERVAL '30 days', '69720236299', 'Pedro Almeida'),
+(1200.00, '6543210', NOW() - INTERVAL '5 days', '17184243293', 'Julia Costa'),
+(800.00, '5432109', NOW() - INTERVAL '15 days', '49371111755', 'Mariana Rocha'),
+(1500.00, '4321098', NOW() - INTERVAL '25 days', '72183742550', 'Fernando Souza'),
+(200.00, '3210987', NOW() - INTERVAL '35 days', '71738376427', 'Camila Ribeiro'),
+(500.00, '2109876', NOW() - INTERVAL '40 days', '06342027587', 'Rafael Mendes'),
+(1000.00, '1098765', NOW() - INTERVAL '10 days', '50680607714', 'Gabriela Monteiro'),
+(1300.00, '9876543', NOW() - INTERVAL '8 days', '57233451761', 'Thiago Nunes'),
+(1800.00, '8765431', NOW() - INTERVAL '6 days', '07422295058', 'Larissa Lopes'),
+(3000.00, '7654320', NOW() - INTERVAL '14 days', '05789191843', 'Bruno Carvalho'),
+(900.00, '6543201', NOW() - INTERVAL '2 days', '39236480659', 'Beatriz Machado');
 
 INSERT INTO movimentacao (idconta, valor, datamovimentacao, acao) VALUES
 (1, 500.00, NOW(), 'DEPOSITAR'),
 (1, 300.00, NOW(), 'DEPOSITAR'),
 (1, -200.00, NOW(), 'RETIRAR'),
 (1, -100.00, NOW(), 'RETIRAR'),
-(1, -50.00, NOW(), 'RETIRAR');
+(1, -50.00, NOW(), 'RETIRAR'),
 
-INSERT INTO movimentacao (idconta, valor, datamovimentacao, acao) VALUES
 (2, 300.00, NOW(), 'DEPOSITAR'),
 (2, -100.00, NOW(), 'RETIRAR'),
 (2, -400.00, NOW(), 'RETIRAR'),
 (2, 200.00, NOW(), 'DEPOSITAR'),
-(2, -500.00, NOW(), 'RETIRAR');
+(2, -500.00, NOW(), 'RETIRAR'),
 
-INSERT INTO movimentacao (idconta, valor, datamovimentacao, acao) VALUES
 (3, 600.00, NOW(), 'DEPOSITAR'),
 (3, -500.00, NOW(), 'RETIRAR'),
 (3, -300.00, NOW(), 'RETIRAR'),
 (3, -800.00, NOW(), 'RETIRAR'),
-(3, 100.00, NOW(), 'DEPOSITAR');
+(3, 100.00, NOW(), 'DEPOSITAR'),
 
-INSERT INTO movimentacao (idconta, valor, datamovimentacao, acao) VALUES
 (4, 400.00, NOW(), 'DEPOSITAR'),
 (4, -600.00, NOW(), 'RETIRAR'),
 (4, -1000.00, NOW(), 'RETIRAR'),
 (4, -2000.00, NOW(), 'RETIRAR'),
-(4, 500.00, NOW(), 'DEPOSITAR');
+(4, 500.00, NOW(), 'DEPOSITAR'),
 
-INSERT INTO movimentacao (idconta, valor, datamovimentacao, acao) VALUES
 (5, 700.00, NOW(), 'DEPOSITAR'),
 (5, -300.00, NOW(), 'RETIRAR'),
 (5, -1500.00, NOW(), 'RETIRAR'),
 (5, -800.00, NOW(), 'RETIRAR'),
 (5, 200.00, NOW(), 'DEPOSITAR');
+
+INSERT INTO movimentacao (idconta, valor, datamovimentacao, acao) VALUES
+(6, 400.00, NOW(), 'DEPOSITAR'),
+(6, -100.00, NOW(), 'RETIRAR'),
+(6, -50.00, NOW(), 'RETIRAR'),
+(6, 200.00, NOW(), 'DEPOSITAR'),
+(6, -300.00, NOW(), 'RETIRAR'),
+(6, 100.00, NOW(), 'DEPOSITAR'),
+(6, -100.00, NOW(), 'RETIRAR'),
+(6, 50.00, NOW(), 'DEPOSITAR'),
+
+(7, 600.00, NOW(), 'DEPOSITAR'),
+(7, -200.00, NOW(), 'RETIRAR'),
+(7, -100.00, NOW(), 'RETIRAR'),
+(7, 300.00, NOW(), 'DEPOSITAR'),
+(7, -400.00, NOW(), 'RETIRAR'),
+(7, 200.00, NOW(), 'DEPOSITAR'),
+(7, -100.00, NOW(), 'RETIRAR'),
+(7, 100.00, NOW(), 'DEPOSITAR'),
+
+(8, 500.00, NOW(), 'DEPOSITAR'),
+(8, -100.00, NOW(), 'RETIRAR'),
+(8, -200.00, NOW(), 'RETIRAR'),
+(8, 100.00, NOW(), 'DEPOSITAR'),
+(8, -300.00, NOW(), 'RETIRAR'),
+(8, 400.00, NOW(), 'DEPOSITAR'),
+(8, -50.00, NOW(), 'RETIRAR'),
+(8, 200.00, NOW(), 'DEPOSITAR'),
+
+(9, 700.00, NOW(), 'DEPOSITAR'),
+(9, -300.00, NOW(), 'RETIRAR'),
+(9, -400.00, NOW(), 'RETIRAR'),
+(9, 500.00, NOW(), 'DEPOSITAR'),
+(9, -600.00, NOW(), 'RETIRAR'),
+(9, 300.00, NOW(), 'DEPOSITAR'),
+(9, -100.00, NOW(), 'RETIRAR'),
+(9, 100.00, NOW(), 'DEPOSITAR');

@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 
-const ModalConfirmacao = ({ isOpen, onDeletePessoa, onRequestClose, pessoaNome }) => (
+const ModalConfirmacao = ({ isOpen, onDeletePessoa, onRequestClose, mensagem }) => (
   <Modal
     isOpen={isOpen}
     onRequestClose={onRequestClose}
@@ -9,7 +9,7 @@ const ModalConfirmacao = ({ isOpen, onDeletePessoa, onRequestClose, pessoaNome }
     overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
   >
     <h2 className="text-lg font-bold text-blue-600 mb-4">Confirmação de exclusão</h2>
-    <p className="text-center mb-6">Você confirma a exclusão da(o) {pessoaNome}?</p>
+    <p className="text-center mb-6">{mensagem}</p>
     <div className="flex justify-center gap-4">
       <button
         onClick={onDeletePessoa}

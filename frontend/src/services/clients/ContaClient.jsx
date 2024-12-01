@@ -1,4 +1,4 @@
-import ApiService from "../BackendService";
+import ApiService from "../ApiService";
 
 export const getContas = async (page = 0, size = 5) => {
   try {

@@ -162,7 +162,7 @@ const PessoaPage = () => {
           isOpen={isConfirmModalOpen}
           onDeletePessoa={confirmarExclusao}
           onRequestClose={fecharModalConfirmacao}
-          pessoaNome={pessoaParaExcluir?.nome}
+          mensagem={`Você confirma a exclusão da(o) ${pessoaParaExcluir?.nome}?`}
         />
       </div>
     </div >
