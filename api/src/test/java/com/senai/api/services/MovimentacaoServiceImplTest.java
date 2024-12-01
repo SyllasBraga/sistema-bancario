@@ -105,14 +105,14 @@ class MovimentacaoServiceImplTest {
         extratoResponse.setValor(movimentacaoModel.getValor());
 
         when(contaService.recuperarConta(CONTA)).thenReturn(contaModel);
-        when(movimentacaoRepository.findByConta(contaModel, pageable)).thenReturn(page);
+        when(movimentacaoRepository.findByContaOrderByDataMovimentacaoDesc(contaModel, pageable)).thenReturn(page);
 
         Page<ExtratoMovimentacaoResponse> result = movimentacaoService.obterExtrato(CONTA, pageable);
 
         assertNotNull(result);
         assertEquals(1, result.getTotalElements());
         assertEquals(BigDecimal.valueOf(500), result.getContent().get(0).getValor());
-        verify(movimentacaoRepository, times(1)).findByConta(contaModel, pageable);
+        verify(movimentacaoRepository, times(1)).findByContaOrderByDataMovimentacaoDesc(contaModel, pageable);
         verify(contaService, times(1)).recuperarConta(CONTA);
     }
 

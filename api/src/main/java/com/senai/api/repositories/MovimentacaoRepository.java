@@ -7,9 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.senai.api.models.MovimentacaoModel;
 
-import java.util.List;
-
 public interface MovimentacaoRepository extends JpaRepository<MovimentacaoModel, Integer>{
 
-    Page<MovimentacaoModel> findByConta(ContaModel conta, Pageable pageable);
+    Page<MovimentacaoModel> findByContaOrderByDataMovimentacaoDesc(ContaModel conta, Pageable pageable);
 }

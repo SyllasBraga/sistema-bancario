@@ -17,8 +17,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @Slf4j
 public class MovimentacaoServiceImpl implements MovimentacaoService {
@@ -62,7 +60,7 @@ public class MovimentacaoServiceImpl implements MovimentacaoService {
 
         ContaModel contaModel = contaService.recuperarConta(conta);
 
-        Page<MovimentacaoModel> movimentacoes = movimentacaoRepository.findByConta(contaModel, pageable);
+        Page<MovimentacaoModel> movimentacoes = movimentacaoRepository.findByContaOrderByDataMovimentacaoDesc(contaModel, pageable);
         Page<ExtratoMovimentacaoResponse> response = MovimentacaoMapper.INSTANCE.toExtratoResponsePage(movimentacoes);
 
         log.info(":: Response - obterExtrato() - Movimentações encontradas: {} ::", response.getTotalElements());
