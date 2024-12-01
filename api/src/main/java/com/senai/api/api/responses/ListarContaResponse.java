@@ -18,6 +18,8 @@ public class ListarContaResponse {
     private String conta;
 
     private String nomeTitular;
+
     private BigDecimal saldo;
 
+    private String dataCriacao;
 }
