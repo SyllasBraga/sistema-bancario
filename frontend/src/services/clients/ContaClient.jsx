@@ -1,8 +1,8 @@
-import apiService from "./apiService";
+import ApiService from "../BackendService";
 
 export const getContas = async (page = 0, size = 5) => {
   try {
-    const response = await apiService.get("/senai-api/v1/conta", { params: { page, size } });
+    const response = await ApiService.get("/senai-api/v1/conta", { params: { page, size } });
     return response.data;
   } catch (error) {
     throw error.response?.data || error.message;
@@ -11,7 +11,7 @@ export const getContas = async (page = 0, size = 5) => {
 
 export const getContasByCpf = async (cpf) => {
   try {
-    const response = await apiService.get(`/senai-api/v1/conta/${cpf}`);
+    const response = await ApiService.get(`/senai-api/v1/conta/${cpf}`);
     return response.data;
   } catch (error) {
     throw error.response?.data || error.message;
@@ -20,7 +20,7 @@ export const getContasByCpf = async (cpf) => {
 
 export const createConta = async (contaData) => {
   try {
-    const response = await apiService.post("/senai-api/v1/conta", contaData);
+    const response = await ApiService.post("/senai-api/v1/conta", contaData);
     return response.data;
   } catch (error) {
     throw error.response?.data || error.message;
@@ -29,7 +29,7 @@ export const createConta = async (contaData) => {
 
 export const deleteConta = async (conta) => {
   try {
-    const response = await apiService.delete(`/senai-api/v1/conta/${conta}`);
+    const response = await ApiService.delete(`/senai-api/v1/conta/${conta}`);
     return response.data;
   } catch (error) {
     throw error.response?.data || error.message;

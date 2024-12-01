@@ -1,7 +1,6 @@
-import './App.css';
+import React from "react";
+import PessoaPage from "./pages/PessoaPage";
 
-function App() {
-  return
-}
+const App = () => <PessoaPage />;
 
 export default App;

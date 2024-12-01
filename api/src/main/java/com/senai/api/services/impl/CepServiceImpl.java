@@ -4,6 +4,7 @@ import com.senai.api.api.requests.CriarCepRequest;
 import com.senai.api.api.responses.CriarCepResponse;
 import com.senai.api.api.responses.ListarCepResponse;
 import com.senai.api.exceptions.BadRequestException;
+import com.senai.api.exceptions.NotFoundException;
 import com.senai.api.mappers.CepMapper;
 import com.senai.api.models.CepModel;
 import com.senai.api.models.enums.MensagensEnum;
@@ -41,7 +42,7 @@ public class CepServiceImpl implements CepService {
         log.info(":: Request - buscarCep() - CEP {} ::", cep);
 
         CepModel model = cepRepository.findByCep(cep)
-                .orElseThrow(() -> new RuntimeException(MensagensEnum.CEP_NAO_ENCONTRADO.getMensagem()));
+                .orElseThrow(() -> new NotFoundException(MensagensEnum.CEP_NAO_ENCONTRADO.getMensagem()));
 
         ListarCepResponse response = CepMapper.INSTANCE.modelToListarCepResponse(model);
 
