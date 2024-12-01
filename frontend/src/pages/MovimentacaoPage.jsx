@@ -6,6 +6,7 @@ import ModalErro from "../components/ModalErro";
 import { listarPessoas } from "../services/clients/PessoaClient";
 import { salvarMovimentacao, getExtrato } from "../services/clients/MovimentacaoClient";
 import { getContasByCpf } from "../services/clients/ContaClient";
+import { ValidarSaldoNegativo } from "../utils/ValidarSaldonegativo";
 
 const MovimentacaoPage = () => {
   const [pessoas, setPessoas] = useState([]);
@@ -78,6 +79,18 @@ const MovimentacaoPage = () => {
 
   const handleSave = async (data) => {
     try {
+      const contaSelecionada = contas.find((conta) => conta.value === data.conta);
+      const saldoAtual = parseFloat(contaSelecionada.label.split(": R$ ")[1]);
+      const dataCriacao = contaSelecionada.dataCriacao;
+      const valorMovimentacao = parseFloat(data.valor.replace(",", "."));
+      const mensagemErro = ValidarSaldoNegativo(dataCriacao, saldoAtual, valorMovimentacao, data.acao);
+  
+      if (mensagemErro) {
+        setModalMessage(mensagemErro);
+        setIsModalOpen(true);
+        return;
+      }
+
       const payload = {
         conta: data.conta,
         acao: data.acao,
