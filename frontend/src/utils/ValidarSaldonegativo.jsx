@@ -7,7 +7,8 @@ export const ValidarSaldoNegativo = (dataCriacao, saldoAtual, valorMovimentacao,
     acao === "DEPOSITAR"
       ? saldoAtual + valorMovimentacao
       : saldoAtual - valorMovimentacao;
-
+  console.log("datacriação:"+dataCriacao);
+  console.log("diascriação"+ diasDesdeCriacao);
   if (diasDesdeCriacao < 5 && valorFinal < 0) {
     return "Conta criada há menos de 5 dias não pode ter saldo negativo.";
   }

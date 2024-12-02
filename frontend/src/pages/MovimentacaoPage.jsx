@@ -55,6 +55,7 @@ const MovimentacaoPage = () => {
         data.map((conta) => ({
           value: conta.conta,
           label: `${conta.conta} - Saldo: R$ ${conta.saldo.toFixed(2)}`,
+          dataCriacao: conta.dataCriacao,
         }))
       );
     } catch {
