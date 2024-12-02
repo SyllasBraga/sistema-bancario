@@ -20,7 +20,7 @@ const PessoaPage = () => {
   const [pessoaParaExcluir, setPessoaParaExcluir] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const [editableFields, setEditableFields] = useState({numero: false, rua: false, cidade: false, estado: false,});
+  const [editableFields, setEditableFields] = useState({ numero: false, rua: false, cidade: false, estado: false, });
 
   const { register, handleSubmit, getValues, setValue, reset, formState: { errors, touchedFields } } = useForm({
     resolver: yupResolver(ValidaModelos),
@@ -57,7 +57,7 @@ const PessoaPage = () => {
       },
     };
 
-    if(processedData.endereco.cep === "" || processedData.endereco.cep===null){
+    if (processedData.endereco.cep === "" || processedData.endereco.cep === null) {
       delete processedData['endereco']
     }
 
@@ -124,7 +124,7 @@ const PessoaPage = () => {
         setValue("endereco.estado", address.estado);
         const rua = address.rua === null;
         console.log(rua)
-        setEditableFields({ numero: true, rua:rua, cidade: false, estado: false });
+        setEditableFields({ numero: true, rua: rua, cidade: false, estado: false });
       } else {
         setEditableFields({ numero: true, rua: true, cidade: true, estado: true });
       }
@@ -140,7 +140,7 @@ const PessoaPage = () => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Cadastro de Pessoa</h1>
+      <h1 className="text-2xl font-bold mt-4 mb-4">Cadastro de Pessoa</h1>
       <FormularioPessoa
         register={register}
         errors={errors}
@@ -150,22 +150,32 @@ const PessoaPage = () => {
         setValue={setValue}
         editableFields={editableFields}
       />
-      <TabelaPessoa pessoas={pessoas} onEdit={handleEdit} onDelete={abrirModalConfirmacao} />
-      <div className="border-t bg-gray-50 fixed bottom-0 w-[60%] p-4 flex justify-center">
+      <div className="pb-10">
+        <TabelaPessoa
+          pessoas={pessoas}
+          onEdit={handleEdit}
+          onDelete={abrirModalConfirmacao}
+        />
+      </div>
+      <div className="border-t bg-gray-50 bottom-0 w-full py-4 flex justify-center">
         <Paginacao
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={fetchPessoas}
         />
-        <ModalErro isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} mensagem={modalMessage} />
-        <ModalConfirmacao
-          isOpen={isConfirmModalOpen}
-          onDeletePessoa={confirmarExclusao}
-          onRequestClose={fecharModalConfirmacao}
-          mensagem={`Você confirma a exclusão da(o) ${pessoaParaExcluir?.nome}?`}
-        />
       </div>
-    </div >
+      <ModalErro
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        mensagem={modalMessage}
+      />
+      <ModalConfirmacao
+        isOpen={isConfirmModalOpen}
+        onDeletePessoa={confirmarExclusao}
+        onRequestClose={fecharModalConfirmacao}
+        mensagem={`Você confirma a exclusão da(o) ${pessoaParaExcluir?.nome}?`}
+      />
+    </div>
   );
 };
 

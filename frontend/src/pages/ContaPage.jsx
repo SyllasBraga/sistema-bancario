@@ -16,7 +16,7 @@ const ContaPage = () => {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [mensagemErro, setMensagemErro] = useState("");
   const [contaParaExcluir, setContaParaExcluir] = useState(null);
-  
+
   useEffect(() => {
     fetchPessoas();
     fetchContas();
@@ -87,14 +87,18 @@ const ContaPage = () => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Cadastro de Conta</h1>
+      <h1 className="text-2xl font-bold mt-4 mb-4">Cadastro de Conta</h1>
       <FormularioConta pessoas={pessoas} onSubmit={handleSave} />
-      <TabelaConta contas={contas} onDelete={abrirModalConfirmacao} />
-      <Paginacao
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={fetchContas}
-      />
+      <div className="pb-20">
+        <TabelaConta contas={contas} onDelete={abrirModalConfirmacao} />
+      </div>
+      <div className="border-t bg-gray-50 bottom-0 w-full py-4 flex justify-center">
+        <Paginacao
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={fetchContas}
+        />
+      </div>
       <ModalErro
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
@@ -104,9 +108,8 @@ const ContaPage = () => {
         isOpen={isConfirmModalOpen}
         onRequestClose={fecharModalConfirmacao}
         onDeletePessoa={handleDelete}
-        mensagem={`Confirma a exclusão da conta ${
-          contaParaExcluir?.conta
-        } com saldo de R$${contaParaExcluir?.saldo}?`}
+        mensagem={`Confirma a exclusão da conta ${contaParaExcluir?.conta
+          } com saldo de R$${contaParaExcluir?.saldo}?`}
       />
     </div>
   );

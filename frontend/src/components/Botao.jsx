@@ -2,7 +2,7 @@ const Botao = ({ label, onClick, type = "button" }) => (
     <button
       type={type}
       onClick={onClick}
-      className="bg-blue-500 ml-2 text-white px-1 py-1 rounded hover:bg-blue-600"
+      className="w-20 h-8 bg-blue-500 text-sm text-white py-1 px-1 rounded hover:bg-blue-600"
     >
       {label}
     </button>

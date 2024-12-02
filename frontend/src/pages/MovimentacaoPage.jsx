@@ -85,7 +85,7 @@ const MovimentacaoPage = () => {
       const dataCriacao = contaSelecionada.dataCriacao;
       const valorMovimentacao = parseFloat(data.valor.replace(",", "."));
       const mensagemErro = ValidarSaldoNegativo(dataCriacao, saldoAtual, valorMovimentacao, data.acao);
-  
+
       if (mensagemErro) {
         setModalMessage(mensagemErro);
         setIsModalOpen(true);
@@ -123,7 +123,7 @@ const MovimentacaoPage = () => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Cadastro de Movimentações</h1>
+      <h1 className="text-2xl font-bold mt-4 mb-4">Cadastro de Movimentações</h1>
       <FormularioMovimentacao
         pessoas={pessoas}
         contas={contas}
@@ -135,12 +135,16 @@ const MovimentacaoPage = () => {
       {selectedConta && (
         <>
           <h2 className="text-xl font-bold mt-6">Extrato</h2>
-          <TabelaMovimentacao extrato={extrato} />
-          <Paginacao
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={(page) => handleContaChange(selectedConta, page)}
-          />
+          <div className="pb-10">
+            <TabelaMovimentacao extrato={extrato} />
+          </div>
+          <div className="border-t bg-gray-50 bottom-0 w-full flex justify-center">
+            <Paginacao
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={(page) => handleContaChange(selectedConta, page)}
+            />
+          </div>
         </>
       )}
       <ModalErro

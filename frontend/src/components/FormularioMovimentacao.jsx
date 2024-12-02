@@ -39,14 +39,14 @@ const FormularioMovimentacao = ({
 
   const handleFormSubmit = (data) => {
     if (!data.acao || !data.valor) {
-      return; // Evita o envio de valores inválidos
+      return;
     }
     onSubmit(data);
   };
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className="grid grid-cols-1 gap-4 border p-4 rounded">
-      <div>
+      <div className="size-1/3 items-center">
         <label className="block text-sm font-medium mb-1">Pessoa</label>
         <select
           {...register("pessoa")}
@@ -64,7 +64,7 @@ const FormularioMovimentacao = ({
         {errors.pessoa && <span className="text-red-500 text-xs">{errors.pessoa.message}</span>}
       </div>
 
-      <div>
+      <div className="size-1/3 items-center">
         <label className="block text-sm font-medium mb-1">Conta</label>
         <select
           {...register("conta")}
@@ -82,7 +82,7 @@ const FormularioMovimentacao = ({
         {errors.conta && <span className="text-red-500 text-xs">{errors.conta.message}</span>}
       </div>
 
-      <div>
+      <div className="size-1/3 items-center">
         <label className="block text-sm font-medium mb-1">Ação</label>
         <select
           {...register("acao")}
@@ -97,7 +97,7 @@ const FormularioMovimentacao = ({
         {errors.acao && <span className="text-red-500 text-xs">{errors.acao.message}</span>}
       </div>
 
-      <div>
+      <div className="size-1/3 items-center">
         <label className="block text-sm font-medium mb-1">Valor</label>
         <input
           type="text"
@@ -113,7 +113,7 @@ const FormularioMovimentacao = ({
 
       <button
         type="submit"
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+        className="w-20 h-8 bg-blue-500 text-sm text-white py-1 px-1 rounded hover:bg-blue-600"
       >
         Salvar
       </button>
